@@ -6,7 +6,7 @@ on:
 
 jobs:
   validate:
-    if: startsWith(github.head_ref, 'task/')
+    if: startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'hotfix/')
     runs-on: ubuntu-latest  
     steps:
       - run: echo "Validate..."
