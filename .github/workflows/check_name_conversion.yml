@@ -5,8 +5,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-  validate:
-    if: startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'hotfix/')
+  BanchNameCheck:
     runs-on: ubuntu-latest  
     steps:
+      - if: startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'hotfix/')
+      - uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Coverage test below tolerance')
       - run: echo "Validate..."
